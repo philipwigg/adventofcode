@@ -29,13 +29,22 @@ def matching_pairs?(pairs)
 
 end
 
+def repeat_with_one_between?(line)
+  if line =~ /([a-z]).\1/
+    true
+  else
+    false
+  end
+end
+
+
 count = 0
 
 i = IO.read('input.txt')
 
 i.each_line do |line|
   pairs = all_pairs_to_array(line)
-  if  matching_pairs?(pairs)
+  if  matching_pairs?(pairs) && repeat_with_one_between?(line)
     count += 1
   end
 end
